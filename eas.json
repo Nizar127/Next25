@@ -13,9 +13,6 @@
         "simulator" : true
         }
       },
-      "android":{
-        "simulator" :true
-      }
     },
     "preview": {
       "distribution": "internal"
