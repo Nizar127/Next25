@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/Badge"
+import { Button } from "@/components/ui/Button"
+import { Tabs} from "@/components/ui/tabs"
 import { FlameIcon as Fire, Sparkles, Clock } from "lucide-react"
 
 export default function DiscoverPage() {
@@ -23,8 +23,9 @@ export default function DiscoverPage() {
           </div>
 
           <Tabs defaultValue="trending" className="w-full">
-            <TabsList>
-              <TabsTrigger value="trending">
+            
+            <Tabs.List space>
+              <TabsTrigger value="trending"></TabsTrigger>
                 <Fire className="w-4 h-4 mr-2" />
                 Trending
               </TabsTrigger>
@@ -36,7 +37,7 @@ export default function DiscoverPage() {
                 <Clock className="w-4 h-4 mr-2" />
                 Categories
               </TabsTrigger>
-            </TabsList>
+            </Tabs.List>
             <TabsContent value="trending" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {Array.from({ length: 6 }).map((_, i) => (
@@ -62,7 +63,7 @@ export default function DiscoverPage() {
             <TabsContent value="new" className="mt-6">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{/* Similar grid of new pitches */}</div>
             </TabsContent>
-            <TabsContent value="categories" className="mt-6">
+            <TabsContent value="categories">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {categories.map((category) => (
                   <Card key={category.name}>
