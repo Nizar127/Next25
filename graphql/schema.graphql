@@ -1,0 +1,22 @@
+type Pitch @model @auth(rules: [
+  { allow: owner, ownerField: "userId", operations: [create, update, delete] },
+  { allow: public, operations: [read] }
+]) {
+  id: ID!
+  title: String!
+  description: String
+  category: String!
+  mediaKey: String
+  likes: Int!
+  userId: ID!
+}
+
+type AnalyticsRecord @model @auth(rules: [
+  { allow: private, operations: [create] },
+  { allow: public, operations: [read] }
+]) {
+  id: ID!
+  eventName: String!
+  metadata: String
+  timestamp: AWSDateTime!
+}

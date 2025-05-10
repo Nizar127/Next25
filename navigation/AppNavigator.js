@@ -7,8 +7,10 @@ import NotificationsScreen from '../screens/NotificationsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 //import UploadModal from '../screens/UploadModal';
 import PitchCreate from '../screens/PitchCreate';
+import CreatePitchButton from '../components/CreatePitchButton';
+import CreatePitchModal from '../screens/Modal/CreatePitchModal';
 import { View } from 'react-native';
-import PitchCreate from '../screens/PitchCreate';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -42,7 +44,7 @@ function MainTabNavigator() {
                 shadowRadius: 4,
                 elevation: 5
               }}>
-                <MaterialCommunityIcons name="plus" size={30} color="white" />
+                <MaterialCommunityIcons name="plus-circle" size={30} color="white" />
               </View>
             );
           } else if (route.name === 'Notifications') {
@@ -68,15 +70,22 @@ function MainTabNavigator() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Discovery" component={DiscoveryScreen} />
       <Tab.Screen 
+          name="CreatePitch" 
+          component={CreatePitchModal}
+          options={{
+            tabBarButton: (props) => <CreatePitchButton {...props} />,
+          }}
+        />
+      {/* <Tab.Screen 
         name="Upload" 
-        component={View} // Dummy component
+        component={PitchCreate} // Dummy component
         listeners={({ navigation }) => ({
           tabPress: (e) => {
             e.preventDefault();
             navigation.navigate('PitchCreate');
           },
         })}
-      />
+      /> */}
       <Tab.Screen name="Notifications" component={NotificationsScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>

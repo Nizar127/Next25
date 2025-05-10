@@ -1,0 +1,86 @@
+#FOR CLOUDFLARE CDN SETUP
+
+# React Native + Firebase + Cloudflare Project Structure
+
+```
+project-root/
+│
+├── .github/                         # GitHub workflows and CI/CD config
+│   └── workflows/
+│       ├── deploy-workers.yml       # Workflow to deploy Cloudflare Workers
+│       └── deploy-firebase.yml      # Workflow to deploy Firebase rules
+│
+├── mobile-app/                      # React Native app codebase
+│   ├── android/                     # Android-specific files
+│   ├── ios/                         # iOS-specific files
+│   ├── src/
+│   │   ├── api/                     # API interaction modules
+│   │   │   ├── index.js             # API client setup
+│   │   │   ├── endpoints.js         # API endpoint definitions
+│   │   │   └── rateLimitHandler.js  # Handling rate limiting responses
+│   │   │
+│   │   ├── components/              # Reusable UI components
+│   │   │
+│   │   ├── config/
+│   │   │   ├── firebase.js          # Firebase configuration
+│   │   │   └── cloudflare.js        # Cloudflare Workers endpoints
+│   │   │
+│   │   ├── hooks/                   # Custom React hooks
+│   │   │   ├── useApi.js            # Hook for API calls with rate limit handling
+│   │   │   └── useFirebase.js       # Hook for direct Firebase operations
+│   │   │
+│   │   ├── screens/                 # App screens
+│   │   │
+│   │   ├── services/
+│   │   │   ├── auth.js              # Authentication service
+│   │   │   ├── storage.js           # Local storage utilities
+│   │   │   └── analytics.js         # Analytics service
+│   │   │
+│   │   ├── store/                   # State management (Redux, Context, etc.)
+│   │   │
+│   │   ├── utils/                   # Utility functions
+│   │   │   ├── errorHandling.js     # Error handling utilities
+│   │   │   └── rateLimit.js         # Client-side rate limit handling
+│   │   │
+│   │   └── App.js                   # Main app component
+│   │
+│   ├── app.json                     # React Native app configuration
+│   ├── package.json                 # Dependencies and scripts
+│   └── index.js                     # Entry point
+│
+├── cloudflare/                      # Cloudflare Workers code
+│   ├── wrangler.toml                # Cloudflare Workers configuration
+│   ├── src/
+│   │   ├── index.js                 # Main worker entry point
+│   │   ├── handlers/                # Request handlers
+│   │   │   ├── auth.js              # Authentication handler
+│   │   │   ├── data.js              # Data operations handler
+│   │   │   └── media.js             # Media operations handler
+│   │   │
+│   │   ├── middleware/
+│   │   │   ├── rateLimit.js         # Rate limiting middleware
+│   │   │   ├── auth.js              # Authentication middleware
+│   │   │   └── cors.js              # CORS handling middleware
+│   │   │
+│   │   ├── utils/
+│   │   │   ├── firebase.js          # Firebase interaction utilities
+│   │   │   └── response.js          # Response formatting utilities
+│   │   │
+│   │   └── config.js                # Worker configuration
+│   │
+│   ├── package.json                 # Worker dependencies
+│   └── test/                        # Tests for Workers
+│
+├── firebase/                        # Firebase configuration
+│   ├── firestore.rules              # Firestore security rules
+│   ├── storage.rules                # Storage security rules
+│   ├── functions/                   # Firebase Cloud Functions
+│   │   ├── src/                     # Functions source code
+│   │   └── package.json             # Functions dependencies
+│   │
+│   └── firebase.json                # Firebase project configuration
+│
+├── .env.example                     # Example environment variables
+├── package.json                     # Root package.json for workspaces
+└── README.md                        # Project documentation
+```

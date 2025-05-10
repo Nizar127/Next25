@@ -5,7 +5,7 @@ import { config } from '../config/theme';
 
 import { ref, onValue, off } from 'firebase/database';
 import { db } from '../config/firebase';
-import PostCard from '../components/PostCard';
+import PostCard from '../components/cards/PostCard';
 
 export default function HomeScreen() {
   const [posts, setPosts] = useState([]);
@@ -53,6 +53,17 @@ export default function HomeScreen() {
               onRefresh={onRefresh}
             />
           }
+          //initialNumToRender={5}
+          //maxToRenderPerBatch={10}
+          //windowSize={10}
+          //removeClippedSubviews={true}
+          //updateCellsBatchingPeriod={50}
+          //getItemLayout={(data, index) => ({
+            //length: ITEM_HEIGHT,
+            //offset: ITEM_HEIGHT * index,
+            //index,
+          //})}
+
           ListEmptyComponent={
             <Box alignItems="center" mt="$10">
               <Text>No posts yet. Be the first to share!</Text>
